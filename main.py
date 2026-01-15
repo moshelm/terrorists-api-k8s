@@ -4,6 +4,7 @@ import uvicorn
 from models import InfoModel
 from pandas import DataFrame
 import os
+from db import MongoManager
 app = FastAPI()
 
 MONGO_HOST = os.getenv("MONGO_HOST","mongo-0.mongo")
@@ -13,12 +14,18 @@ MONGO_PASSWORD = os.getenv("MONGO_PASSWORD","secretpass")
 MONGO_DB = os.getenv("MONGO_DB","threat_db")
 MONGO_AUTH_SOURCE = os.getenv("MONGO_AUTH_SOURCE","admin")
 
+# @app.on_event("/")
+# def initial_db():
+#     db = MongoManager()
+
 @app.post('/top-threats')
 def get_data(file_csv: UploadFile):
     df = pd.read_csv(file_csv.file)
     res = sort_by_danger_rate(df)
     number_of_terrorest, spec_info = get_info(res)
-    print(spec_info)
+    
+    db = MongoManager()
+    db.insert_all(spec_info)
     return {
         "count":number_of_terrorest,
         "top":spec_info
