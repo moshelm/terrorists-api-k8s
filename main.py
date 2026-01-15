@@ -37,8 +37,11 @@ def sort_by_danger_rate(data:DataFrame):
 
 
 def get_info(data:list[dict]):    
-    return len(data), [InfoModel(**record) for record in data]
-
+    recoreds = [InfoModel(**record).model_dump() for record in data]
+    for i in range(len(recoreds)):
+        recoreds[i]['_id'] = i +1
+    return len(data), recoreds
+    
 
 if __name__=="__main__":
     uvicorn.run(app,host='0.0.0.0',port=8000)
