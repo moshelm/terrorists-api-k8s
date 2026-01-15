@@ -3,9 +3,15 @@ import pandas as pd
 import uvicorn
 from models import InfoModel
 from pandas import DataFrame
-
+import os
 app = FastAPI()
 
+MONGO_HOST = os.getenv("MONGO_HOST","mongo-0.mongo")
+MONGO_PORT = os.getenv("MONGO_PORT","27017")
+MONGO_USERNAME = os.getenv("MONGO_USERMANE","admin")  
+MONGO_PASSWORD = os.getenv("MONGO_PASSWORD","secretpass")
+MONGO_DB = os.getenv("MONGO_DB","threat_db")
+MONGO_AUTH_SOURCE = os.getenv("MONGO_AUTH_SOURCE","admin")
 
 @app.post('/top-threats')
 def get_data(file_csv: UploadFile):
