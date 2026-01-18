@@ -62,8 +62,15 @@ def sort_by_danger_rate(data:DataFrame):
     return raw_records.to_dict(orient= 'records')
 
 
-def get_specific_info(data: list[dict]) -> tuple[int,list[dict]]:    
-    recoreds = [BasicInfoTerrorist(**record).model_dump(by_alias=True) for record in data]
+def get_specific_info(data: list[dict]) -> tuple[int, list[dict]]:
+    """
+    made validation by pydentic and return to python objects 
+    :param data: data for validation
+    :type data: list[dict]
+    :return: number of objects and list with them
+    :rtype: tuple[int, list[dict]] 
+    """    
+    recoreds = [BasicInfoTerrorist(**record).model_dump(by_alias= True, exclude_none= True) for record in data]
     return len(recoreds), recoreds
     
 
