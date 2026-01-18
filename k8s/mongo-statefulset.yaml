@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mongo 
 spec:
+  serviceName: "mongo-headless"
   replicas: 3
   selector:
     matchLabels:
