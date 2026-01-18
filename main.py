@@ -8,7 +8,7 @@ from models import BasicInfoTerrorist, TopThreatsResponse
 from db import MongoManager
 
 
-MONGO_HOST = os.getenv("MONGO_HOST","mongo-0.mongo")
+MONGO_HOST = os.getenv("MONGO_HOST","127.0.0.1")
 MONGO_PORT = os.getenv("MONGO_PORT","27017")
 MONGO_USERNAME = os.getenv("MONGO_USERNAME","admin")  
 MONGO_PASSWORD = os.getenv("MONGO_PASSWORD","secretpass")
