@@ -27,7 +27,7 @@ spec:
               value: "27017"
             - name: MONGO_USERNAME
               value: "admin"
-            - name: MONGO_PAASWORD
+            - name: MONGO_PASSWORD
               value: "secretpass"
             - name: MONGO_DB
               value: "threat_db"
