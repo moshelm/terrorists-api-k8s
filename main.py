@@ -25,16 +25,25 @@ def get_db():
 
 @app.post('/top-threats',response_model=TopThreatsResponse)
 async def getting_and_processing_data(file: UploadFile = File(...), database = Depends(get_db) ):
+    """
+    getting file from user by fastapi 
+    creating and insert to database specific information from file
+    :param file: file 
+    :type file: UploadFile
+    :param database: create daatabase
+    """
+    # check and rais error for file that its name no .csv
     if not file.filename.endswith('.csv'):
-        raise HTTPException(status_code=400,detail="Invalid type file")
+        raise HTTPException(status_code= 400, detail= "Invalid type file")
     # 1. read from file
     contatns = await file.read()
+    # read by bytes
     df = pd.read_csv(BytesIO(contatns))
     # 2. Data processing
     data = sort_by_danger_rate(df)
     number_of_recoreds, spec_info = get_specific_info(data)
     # 3. insert to db
-    db.insert_all(spec_info)
+    database.insert_all(spec_info)
 
     return {
         "count":number_of_recoreds,
