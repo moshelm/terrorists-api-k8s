@@ -15,3 +15,19 @@ run :
 ## run docker compose 
 
 * run "docker compose up -d"
+
+# for using k8s
+
+## local using minikube
+* **run**: minikube start
+* kubectl apply -f k8s
+* minikube service svc threat-api-svc
+
+# for using openshift
+* login use oc token
+* **run** oc apply -f k8s
+* oc expose svc threat-api-svc
+* oc get route threat-api-svc
+* open in brower address in HOST/PORT (sometime you need to remove 's' from https)
+
+
