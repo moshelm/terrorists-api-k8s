@@ -10,6 +10,7 @@ spec:
   selector:
     matchLabels:
       app: threat-api
+      tier: backend
   template:
     metadata:
       labels:
