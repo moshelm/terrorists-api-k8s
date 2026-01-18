@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: threat-api
+  name: threat-api-deployment
   labels:
     app: threat-api
     tier: backend
@@ -16,13 +16,13 @@ spec:
         app: threat-api
     spec:
       containers:
-        - name: threat-api
+        - name: api-container
           image: moshe5434/threat-api:v1
           ports:
             - containerPort: 8000
           env:
             - name: MONGO_HOST
-              value: "mongo-0.mongo"
+              value: "mongo-0.mongo-headless"
             - name: MONGO_PORT
               value: "27017"
             - name: MONGO_USERNAME
