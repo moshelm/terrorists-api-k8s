@@ -22,7 +22,7 @@ spec:
           - containerPort: 27017
           volumeMounts: 
             - name: mongo-data
-              mountPath: data/db/
+              mountPath: /data/db
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               value: "admin"
