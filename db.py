@@ -19,9 +19,7 @@ class MongoManager():
         self.collection = self.database['top_threats']
 
     def insert_all(self,data:list[dict]):
-        
-        for record in data:
-            self.collection.insert_one(record)
+        self.collection.insert_many(data)
 
 
 
