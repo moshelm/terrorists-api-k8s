@@ -54,13 +54,12 @@ def sort_by_danger_rate(data:DataFrame):
     """
     sorting by column danger_rate 
     return in dict form
-    
     :param data: Description
     :type data: DataFrame
     return: data sorted in dict form
     """
-    raw_records = data.sort_values(by='danger_rate',ascending=False).head(5)
-    return raw_records.to_dict(orient='records')
+    raw_records = data.sort_values(by= 'danger_rate', ascending= False).head(5)
+    return raw_records.to_dict(orient= 'records')
 
 
 def get_specific_info(data: list[dict]) -> tuple[int,list[dict]]:    
@@ -69,5 +68,5 @@ def get_specific_info(data: list[dict]) -> tuple[int,list[dict]]:
     
 
 if __name__=="__main__":
-    uvicorn.run(app,host='0.0.0.0',port=8000)
-    
+    uvicorn.run(app, host= '0.0.0.0', port= 8000)
+     
