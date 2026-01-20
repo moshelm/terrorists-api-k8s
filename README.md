@@ -30,6 +30,21 @@ run :
 * oc get route threat-api-svc
 * open in brower address in HOST/PORT (sometime you need to remove 's' from https)
 
+# create by openshift 
+## run this commands
+
+* **creating mongo bc! about name and env**
+
+* oc new-app docker.io/library/mongo:7 --name=mongo -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=secretpass -e MONGO_INITDB_DATABASE=threat_db
+
+* **creating app bc! MONGO_HOST have to be same as --name in mongo**
+
+* oc new-app https://github.com/moshelm/terrorists-api-k8s.git --name=threat-api -e MONGO_HOST=mongo -e MONGO_PORT=27017 -e MONGO_USERNAME=admin -e MONGO_PASSWORD=secretpass -e MONGO_DB=threat_db -e MONGO_AUTH_SOURCE=admin
+
+* oc expose svc threat-api-svc
+* oc get route threat-api-svc
+* open in brower address in HOST/PORT (sometime you need to remove 's' from https)
+
 # env variabel
 MONGO_HOST 
 MONGO_PORT 
