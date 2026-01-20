@@ -46,11 +46,19 @@ run :
 * open in brower address in HOST/PORT (sometime you need to remove 's' from https)
 
 # env variabel
-MONGO_HOST 
-MONGO_PORT 
-MONGO_USERNAME
-MONNGO_PASSWORD
-MONGO_DB
-MONGO_AUTH_SOURCE
+1. MONGO_HOST 
+2. MONGO_PORT 
+3. MONGO_USERNAME
+4. MONNGO_PASSWORD
+5. MONGO_DB
+6. MONGO_AUTH_SOURCE
+
+# to see in mongo compase
+* run
+* **creating tannel**
+* oc port-forward deployment/mongo 27017:27017
+
+* in compase enter this for connection
+* mongodb://admin:secretpass@localhost:27017/threat_db?authSource=admin
 
 
