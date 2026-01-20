@@ -30,4 +30,12 @@ run :
 * oc get route threat-api-svc
 * open in brower address in HOST/PORT (sometime you need to remove 's' from https)
 
+# env variabel
+MONGO_HOST 
+MONGO_PORT 
+MONGO_USERNAME
+MONNGO_PASSWORD
+MONGO_DB
+MONGO_AUTH_SOURCE
+
 
